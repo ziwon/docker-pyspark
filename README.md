@@ -2,8 +2,14 @@
 
 Dockerized PySpark with examples
 
-Run
+### Installation
 
+```bash
+docker pull ziwon/docker-pyspark
 ```
+
+### Run
+
+```bash
 make run
 ```
