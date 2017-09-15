@@ -37,3 +37,11 @@ RUN cd /opt && ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} s
 ENV SPARK_HOME /opt/spark
 ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 ENV SPARK_OPTS --driver-java-options=-Xms512M --driver-java-options=-Xmx2096M --driver-java-options=-Dlog4j.logLevel=error
+
+# entrypoint
+ENV APP_HOME /opt/app
+ADD examples $APP_HOME
+WORKDIR $APP_HOME
+
+RUN chmod +x $APP_HOME/entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]

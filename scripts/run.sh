@@ -9,7 +9,7 @@ echo ">> Running..."
 
 APP_HOME="${APP_HOME:-/opt/app}"
 
-CMD="docker run -v $(pwd)/examples:$APP_HOME -it ${IMAGE_NAME}${TAG} bash -c "$APP_HOME/ratings-counter.py" $@"
+CMD="docker run -it ${IMAGE_NAME}${TAG} bash"
 echo ">> $CMD" && $CMD
 
 [ ! $? -eq 0 ] && { echo "Error occured while running: ${IMAGE_NAME}${TAG}"; exit 1; } || echo ">> Finished."
