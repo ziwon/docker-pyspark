@@ -30,7 +30,7 @@ RUN cd /tmp && \
     wget -q http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
     tar xzf spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz -C /opt && \
     rm spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
-    
+
 RUN cd /opt && ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark
 
 # Spark config
@@ -40,6 +40,7 @@ ENV SPARK_OPTS --driver-java-options=-Xms512M --driver-java-options=-Xmx2096M --
 
 # entrypoint
 ENV APP_HOME /opt/app
+ENV PYTHONIOENCODING UTF-8
 ADD examples $APP_HOME
 WORKDIR $APP_HOME
 
